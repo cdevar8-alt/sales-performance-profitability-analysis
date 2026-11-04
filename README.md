@@ -4,21 +4,21 @@
 
 This project analyzes sales performance and profitability using SQL, SQLite, and Tableau. The objective is to evaluate product and regional performance, identify unprofitable sub-categories, and investigate how discount levels relate to profitability.
 
-SQL was used to query, aggregate, and analyze the sales data, while Tableau was used to develop a dashboard that presents key performance indicators (KPIs), category-level sales, high-discount profitability, and a discount profitability heatmap.
+SQL was used to query, aggregate, and analyze sales data, while Tableau was used to develop a dashboard presenting key performance indicators (KPIs), category-level sales, high-discount profitability, and a discount profitability heatmap.
 
-The analysis aims to translate raw sales data into actionable business insights that support better pricing, discounting, and profitability decisions.
+The goal is to translate raw sales data into actionable business insights that support better pricing, discounting, and profitability decisions.
 
 ## Tools & Technologies
 
 - **SQL (SQLite):** Data aggregation, filtering, grouping, sorting, conditional logic, and profitability analysis
 - **DB Browser for SQLite:** Database management and SQL query execution
 - **Tableau Desktop:** Dashboard development, KPI visualization, bar charts, and profitability heatmap
-- **GitHub:** Project documentation and version control
+- **GitHub:** Project documentation, file sharing, and version control
 
 ## Business Questions
 
 1. What are the overall sales, total profit, and number of orders?
-2. Which product categories generate the highest sales and profit?
+2. Which product categories generate the highest sales?
 3. Which regions contribute the most sales?
 4. Which sub-categories are the most and least profitable?
 5. How do shipping modes compare in order volume, sales, and profit?
@@ -30,7 +30,7 @@ The analysis aims to translate raw sales data into actionable business insights 
 
 The SQL analysis includes:
 
-- Overall sales, profit, and order metrics
+- Overall sales, profit, profit margin, and order metrics
 - Sales and profit comparisons by product category and region
 - Sub-category profitability analysis
 - Order volume and performance by shipping mode
@@ -38,7 +38,7 @@ The SQL analysis includes:
 - Profitability comparisons between high-discount and low-discount records
 - Profit margin calculations by sub-category and discount level
 
-High-discount records are defined as records with a discount of **20% or more**. Low-discount records have discounts below 20%.
+For this analysis, records with discounts of **20% or more** are classified as high-discount records. Records with discounts below 20% are classified as low-discount records.
 
 ## Key Findings
 
@@ -50,8 +50,9 @@ High-discount records are defined as records with a discount of **20% or more**.
 | Total Profit | $292,297 |
 | Profit Margin | 12.6% |
 | Total Orders | 5,111 |
+| Total Records Analyzed | 10,194 |
 
-The business generated approximately $2.33 million in sales and $292,297 in profit, with an overall profit margin of 12.6%.
+The business generated approximately $2.33 million in sales and $292,297 in profit, resulting in an overall profit margin of 12.6%.
 
 These metrics provide a high-level view of business performance. However, overall profitability can hide substantial differences between products and discount levels.
 
@@ -85,24 +86,24 @@ Several sub-categories recorded substantial losses among high-discount records.
 | Binders | -$8,994.96 |
 | Appliances | -$6,116.00 |
 
-Tables and Machines experienced the largest losses in the high-discount group, followed by Bookcases.
+Tables and Machines experienced the largest losses in the high-discount group, followed by Bookcases and Binders.
 
-Appliances also showed a negative profit margin of **-24.26%** in the analysis.
-
-However, some sub-categories remained profitable under high discounts:
+However, several sub-categories remained profitable under high discounts.
 
 | Sub-Category | Total Profit |
 |---|---:|
-| Copiers | $20,062 |
-| Phones | $10,160 |
-| Paper | $8,771 |
-| Accessories | $6,647 |
+| Copiers | $20,061.69 |
+| Phones | $10,160.45 |
+| Paper | $8,770.70 |
+| Accessories | $6,647.38 |
 
-Copiers generated the highest profit among the listed profitable sub-categories in the high-discount group. Accessories remained profitable but had a lower reported profit margin of 13.56%.
+Copiers generated the highest profit among the listed profitable sub-categories in the high-discount group. Accessories also remained profitable, with a reported profit margin of 13.56%, while Appliances had a negative profit margin of -24.26%.
 
-**Business implication:** Loss-making sub-categories should be investigated individually. Differences in product costs, discount rates, order sizes, and product mix may help explain why profitability varies.
+**Business implication:** Loss-making sub-categories should be investigated individually. Differences in product costs, discount rates, selling prices, order sizes, and product mix may help explain why profitability varies.
 
-### 4. Existing Sales Performance Findings
+### 4. Category, Regional, and Shipping Performance
+
+The analysis also identified the following findings:
 
 - **Technology** generated the highest sales among the three product categories.
 - The **West region** had the highest total sales among the regions analyzed.
@@ -113,17 +114,23 @@ These findings demonstrate why sales volume alone is insufficient for evaluating
 
 ## Tableau Dashboard
 
-The Tableau dashboard brings the analysis together into an interactive visual summary.
+The Tableau dashboard combines the analysis into a visual summary of sales performance and profitability.
 
-The dashboard includes:
+### Dashboard Preview
 
-- **KPI cards:** Total sales, total profit, profit margin, and total orders
+![Sales Performance & Profitability Dashboard](Sales_Performance_Dashboard.png)
+
+### Dashboard Components
+
+- **KPI Cards:** Total sales, total profit, profit margin, and total orders
 - **Sales by Category:** Compares sales across Technology, Furniture, and Office Supplies
 - **Profit Impact of High Discounts:** Highlights profitable and unprofitable sub-categories among high-discount records
 - **Profit by Discount Level:** Compares total profit between high- and low-discount records
 - **Discount Profitability Heatmap:** Compares sub-category profitability across high- and low-discount groups
 
-The visualizations make it easier to identify high-performing categories, spot loss-making sub-categories, and investigate the relationship between discount levels and profitability.
+The dashboard makes it easier to identify high-performing categories, spot loss-making sub-categories, and investigate the relationship between discount levels and profitability.
+
+The packaged Tableau workbook is included in this repository for further exploration.
 
 ## Business Recommendations
 
@@ -143,7 +150,7 @@ Compare high- and low-discount records within the same sub-category. This provid
 
 ### 4. Focus on Profit Margin Alongside Sales
 
-Evaluate products using total sales, total profit, and profit margin. High revenue does not necessarily mean a product is contributing strongly to profitability.
+Evaluate products using total sales, total profit, and profit margin. High revenue does not necessarily mean a product contributes strongly to profitability.
 
 ### 5. Monitor Performance Regularly
 
@@ -155,8 +162,9 @@ Use the Tableau dashboard to monitor key performance indicators and identify cha
 
 - `sales_analysis.sql` — SQL queries used for sales and profitability analysis
 - `sales_analytics.db` — SQLite database containing the analysis data
-
-The Tableau workbook can also be included in the repository if saved and prepared for sharing.
+- `Sales_Performance_Profitability.twbx` — Packaged Tableau workbook containing the dashboard and visualizations
+- `Sales_Performance_Dashboard.png` — Dashboard screenshot for previewing the analysis directly on GitHub
+- `README.md` — Project documentation, findings, and recommendations
 
 ## How to Use
 
@@ -164,7 +172,7 @@ The Tableau workbook can also be included in the repository if saved and prepare
 2. Open `sales_analytics.db` using DB Browser for SQLite.
 3. Open `sales_analysis.sql` in the SQL editor.
 4. Execute the queries individually to review the results.
-5. Open the Tableau workbook, if included, to explore the dashboard and visualizations.
+5. Open the packaged Tableau workbook (`.twbx`) in Tableau Desktop to explore the dashboard and visualizations.
 
 ## Skills Demonstrated
 
@@ -173,12 +181,17 @@ The Tableau workbook can also be included in the repository if saved and prepare
 - SQLite database management
 - Sales and profitability analysis
 - Discount analysis and profit margin calculations
+- KPI development and business performance measurement
 - Tableau dashboard development and data visualization
 - Business insight development and recommendation writing
-- GitHub project documentation
+- GitHub documentation and version control
 
 ## Conclusion
 
-This project demonstrates how SQL and Tableau can be combined to analyze sales performance and profitability. The findings highlight substantial differences in profitability between discount groups and identify sub-categories that warrant further investigation.
+This project demonstrates how SQL, SQLite, and Tableau can be used together to analyze sales performance, evaluate profitability, and translate data into actionable business insights.
 
-By connecting quantitative analysis with business recommendations, the project demonstrates an analytical workflow that moves from querying data to identifying patterns and supporting data-informed decisions.
+The analysis identified substantial differences in profitability between high- and low-discount records, as well as specific sub-categories that warrant further investigation. Although high-discount records generated significant sales, they collectively produced a loss, while low-discount records generated positive profit.
+
+By combining SQL-based analysis with an interactive Tableau dashboard, the project highlights the importance of evaluating profit and profit margin alongside sales revenue. The findings provide a basis for further investigation into discounting practices, product-level profitability, and pricing decisions.
+
+Overall, the project demonstrates an end-to-end analytical workflow, from querying and interpreting data to communicating findings through business-focused visualizations and recommendations.
