@@ -118,7 +118,7 @@ The Tableau dashboard combines the analysis into a visual summary of sales perfo
 
 ### Dashboard Preview
 
-![Sales Performance & Profitability Dashboard](Sales_Performance_Dashboard.png)
+![Sales Performance & Profitability Dashboard](<SALES PERFORMANCE & PROFITABILITY.png>)
 
 ### Dashboard Components
 
